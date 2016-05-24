@@ -21,7 +21,7 @@ handlers:
   upload: client/dist/index.html
 
 skip_files:
-- ^client/$
+- ^client(?!/dist)/.*$
 - ^(.*/)?#.*#$
 - ^(.*/)?.*~$
 - ^(.*/)?.*\.py[co]$
