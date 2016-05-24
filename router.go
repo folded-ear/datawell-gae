@@ -1,4 +1,4 @@
-package hello
+package datawell
 
 import (
 	"fmt"
@@ -8,7 +8,6 @@ import (
 	"github.com/gorilla/mux"
 	"strings"
 )
-
 
 func init() {
 	r := mux.NewRouter()
