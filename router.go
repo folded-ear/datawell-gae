@@ -2,10 +2,10 @@ package datawell
 
 import (
 	"fmt"
+	"github.com/gorilla/mux"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/user"
 	"net/http"
-	"github.com/gorilla/mux"
 	"strings"
 )
 
@@ -21,7 +21,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "text/html; charset=utf-8")
 	ctx := appengine.NewContext(r)
 	u := user.Current(ctx)
-	fmt.Fprint(w, `<link rel="stylesheet" href="/static/style.css" />`)
 	if strings.Contains(path, `penis`) {
 		fmt.Fprint(w, `<p>Penis is Funny!</p>`)
 	}

@@ -5,14 +5,25 @@ api_version: go1
 
 handlers:
 - url: /static
-  static_dir: static
+  static_dir: client/dist/static
 
-- url: /api/.*
+- url: /jsapi.*
   script: _go_app
   login: required
   auth_fail_action: unauthorized
 
-- url: /.*
-  script: _go_app
+#- url: /api.*
+#  script: _go_app
+#  auth_fail_action: unauthorized
 
-# ignore the client source dir, when present, with skip_files
+- url: /.*
+  static_files: client/dist/index.html
+  upload: client/dist/index.html
+
+skip_files:
+- ^client/$
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
