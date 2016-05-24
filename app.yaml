@@ -19,6 +19,7 @@ handlers:
 
 skip_files:
 - ^client(?!/dist)/.*$
+- ^keys-sample.json$
 - ^(.*/)?#.*#$
 - ^(.*/)?.*~$
 - ^(.*/)?.*\.py[co]$

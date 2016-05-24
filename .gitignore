@@ -1,4 +1,5 @@
 /client
+/keys.json
 *.ipr
 *.iml
 *.iws
