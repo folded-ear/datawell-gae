@@ -9,12 +9,9 @@ handlers:
 
 - url: /jsapi.*
   script: _go_app
-  login: required
-  auth_fail_action: unauthorized
 
 #- url: /api.*
 #  script: _go_app
-#  auth_fail_action: unauthorized
 
 - url: /.*
   static_files: client/dist/index.html
