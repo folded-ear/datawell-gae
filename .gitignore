@@ -1,4 +1,7 @@
 /client
+*.ipr
+*.iml
+*.iws
 
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
