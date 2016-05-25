@@ -5,6 +5,7 @@ import (
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/user"
 	"net/http"
+	"strconv"
 )
 
 type LoggedInMiddleware struct{}
@@ -15,11 +16,18 @@ func (mw *LoggedInMiddleware) MiddlewareFunc(handler rest.HandlerFunc) rest.Hand
 		ctx := appengine.NewContext(r.Request)
 		u := user.Current(ctx)
 		if u == nil {
-			url, _ := user.LoginURL(ctx, PATH_PREFIX+r.URL.Path)
+			url, _ := user.LoginURL(ctx, r.Referer())
 			w.WriteHeader(http.StatusUnauthorized)
-			w.WriteJson(map[string]string{
-				"Error":    "Login required",
-				"LoginUrl": url,
+			w.WriteJson(ErrorResponse{
+				Errors: []Error{
+					Error{
+						Status: strconv.Itoa(http.StatusUnauthorized),
+						Title: "Unauthorized",
+					},
+				},
+				Meta: map[string]interface{}{
+					"login_url": url,
+				},
 			})
 			return
 		}
