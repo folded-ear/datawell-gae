@@ -18,7 +18,6 @@ func init() {
 		&rest.RecoverMiddleware{
 			EnableResponseStackTrace: true,
 		},
-		&rest.JsonIndentMiddleware{},
 		&rest.ContentTypeCheckerMiddleware{},
 	)
 	router, err := rest.MakeRouter(
